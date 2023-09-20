@@ -10,10 +10,14 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- script: dotnet test
+  displayName: Run unit test
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: Build application
+
+- script: docker build -t my-image:v1.0
+  displayName: Build image
+
+- script: docker push my-image:v1.0
+  displayName: Push image
