@@ -9,9 +9,12 @@ trigger:
 #pool:
 #  vmImage: ubuntu-latest
 
-pool: my-personal-computer
+jobs:
+- job: Build
+  displayName: Build
+  pool: my-personal-computer
 
-steps:
-- script: dotnet build
-  displayName: Build application
-
+  steps:
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'build'
