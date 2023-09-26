@@ -31,12 +31,3 @@ jobs:
       nuGetFeedType: 'internal'
       publishVstsFeed: 'e9a6b136-a672-461b-8516-cd5192531248'
 
-- job: SCA_Scan
-  dependsOn: Build
-  displayName: SCA Scan
-  pool: my-personal-computer
-  steps:
-  - task: DownloadPipelineArtifact@2
-    inputs:
-      buildType: 'current'
-      targetPath: '$(Pipeline.Workspace)'
