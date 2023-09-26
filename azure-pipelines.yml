@@ -34,8 +34,6 @@ jobs:
 - job: SCA_Scan
   dependsOn: Build
   displayName: SCA Scan
-  variables:
-  - group: MyAssuranceMPM-dso-ast
   pool: my-personal-computer
   steps:
   - task: DownloadPipelineArtifact@2
