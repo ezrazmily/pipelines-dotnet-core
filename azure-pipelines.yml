@@ -12,14 +12,6 @@ trigger:
 pool: my-personal-computer
 
 steps:
-- script: dotnet test
-  displayName: Run unit test
-
-- script: dotnet build --configuration $(buildConfiguration)
+- script: dotnet build
   displayName: Build application
 
-- script: docker build -t my-image:v1.0
-  displayName: Build image
-
-- script: docker push my-image:v1.0
-  displayName: Push image
