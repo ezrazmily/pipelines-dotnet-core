@@ -34,3 +34,16 @@ jobs:
       buildType: 'current'
       targetPath: '$(Pipeline.Workspace)'
 
+- job: SAST_Scan
+  displayName: SAST Scan
+  timeoutInMinutes: 600
+  condition: eq(variables['sast-run-scan-be'], 'yes')
+  pool: my-personal-computer
+  steps:
+    - task: NuGetCommand@2
+      inputs:
+        command: 'restore'
+        restoreSolution: '**/*.sln'
+        feedsToUse: 'select'
+        vstsFeed: 'e9a6b136-a672-461b-8516-cd5192531248'
+
